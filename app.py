@@ -243,4 +243,3 @@ with st.expander("💡 Example Questions"):
         if st.button(example, key=example):
             # Simulate entering the question
             AppUserInput(example)
-            #st.rerun()

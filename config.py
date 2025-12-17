@@ -27,5 +27,5 @@ AVAILABLE_MODELS = ["gpt-4.1",
                     "o1-mini"] # List of all available models for app.py
 
 # Embedding Model
-EMBEDDING_MODEL_NAME = "" # UPDATE TO YOUR MODEL
+EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2" # UPDATE TO YOUR MODEL
 EMBEDDING_DIMENSION = 384 # UPDATE TO YOUR MODEL

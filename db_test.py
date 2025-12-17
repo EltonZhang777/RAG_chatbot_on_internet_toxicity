@@ -7,7 +7,6 @@ from backend.database import RAGDatabase
 from config import DEFAULT_DB_PATH
 import config
 
-config.AddAllDirectories()
 
 st.title("Database Connection Test")
 

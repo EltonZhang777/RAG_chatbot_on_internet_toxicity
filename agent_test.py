@@ -8,8 +8,6 @@ from backend.database import RAGDatabase
 from backend.agent import RAGAgent
 import config
 
-config.AddAllDirectories()
-
 st.title("RAG Agent Test")
 
 api_key = st.text_input(

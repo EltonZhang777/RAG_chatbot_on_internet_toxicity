@@ -14,8 +14,6 @@ from backend.database import RAGDatabase
 from backend.agent import RAGAgent
 import config
 
-config.AddAllDirectories()
-
 # -----------------------------------------------------------------------------
 # Page Configuration (must be first Streamlit command)
 # -----------------------------------------------------------------------------

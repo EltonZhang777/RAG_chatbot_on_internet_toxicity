@@ -29,9 +29,3 @@ AVAILABLE_MODELS = ["gpt-4.1",
 # Embedding Model
 EMBEDDING_MODEL_NAME = "" # UPDATE TO YOUR MODEL
 EMBEDDING_DIMENSION = 384 # UPDATE TO YOUR MODEL
-
-def AddAllDirectories():
-    os.add_dll_directory(r"C:\\Users\\28090\\anaconda3\\envs\\py310")
-    for p in os.environ['path'].split(';'):
-        if os.path.isdir(p):
-            os.add_dll_directory(p)

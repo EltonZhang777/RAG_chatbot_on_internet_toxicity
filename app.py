@@ -170,14 +170,13 @@ for message in st.session_state.messages:
 # st.chat_input returns None until user submits, then returns their text
 # The := (walrus operator) assigns AND checks in one line
 
-if prompt := st.chat_input("Ask a question about internet toxicity..."):
-    
+def AppUserInput(inputText: str):
     # TO DO: Add user message to history
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.session_state.messages.append({"role": "user", "content": inputText})
     
     # TO DO: Display user message
     with st.chat_message("user"):
-        st.markdown(prompt)
+        st.markdown(inputText)
     
     # Generate and display assistant response
     with st.chat_message("assistant"):
@@ -189,15 +188,16 @@ if prompt := st.chat_input("Ask a question about internet toxicity..."):
                                  max_iter = max_iter)
                 
                 # Get answer
-                result = agent.ask(prompt)
+                result = agent.ask(inputText)
                 response = result["answer"]
                 sources = result["sources"]
                 
                 st.markdown(response)
                 
                 # Display sources immediately
+                st.markdown(f"{len(sources)} source passages retrieved.")
                 if sources:
-                    with st.expander(f"📚 View Sources ({len(sources)} passages retrieved)"):
+                    with st.expander(f"📚 View Sources:"):
                         for i, source in enumerate(sources, 1):
                             st.markdown(f"**Source {i}** (Similarity: {source['similarity']:.3f})")
                             st.text_area(
@@ -226,6 +226,9 @@ if prompt := st.chat_input("Ask a question about internet toxicity..."):
                     "sources": []
                 })
 
+if prompt := st.chat_input("Ask a question about internet toxicity..."):
+    AppUserInput(prompt)
+
 # TO DO: Example questions in an expander
 with st.expander("💡 Example Questions"):
     examples = [
@@ -239,5 +242,5 @@ with st.expander("💡 Example Questions"):
     for example in examples:
         if st.button(example, key=example):
             # Simulate entering the question
-            st.session_state.messages.append({"role": "user", "content": example})
-            st.rerun()
+            AppUserInput(example)
+            #st.rerun()

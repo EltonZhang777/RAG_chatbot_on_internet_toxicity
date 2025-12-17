@@ -65,7 +65,15 @@ class RAGAgent:
         self.last_sources = []
         
         # TO DO: Create the LLM instance
-        llm = LLM(model_name=self.model_name)
+        llm = LLM(
+            model=self.model_name,
+            temperature=0.5,
+            timeout=100,
+            max_tokens=5000,
+            top_p=0.9,
+            frequency_penalty=0.05,
+            presence_penalty=0.05
+        )
 
         # TO DO: Call the database tool (e.g. the function above)
         query_tool = self.create_tool(self)

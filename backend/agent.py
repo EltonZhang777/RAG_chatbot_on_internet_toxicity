@@ -80,9 +80,9 @@ class RAGAgent:
         
 
         agent = Agent(
-            role='internet toxicity Content Assistant',
+            role='internet toxicity Content Expert and public lecture host',
             goal='Answer questions about internet toxicity using the database',
-            backstory='You are an expert who has access to a database with content about internet toxicity.',
+            backstory='You are an expert who has access to a database with content about internet toxicity, and can explain concepts in simple terms if necessary.',
             tools=[query_tool],
             llm=llm,
             verbose=True, # Shows what the agent is doing

@@ -76,7 +76,7 @@ class RAGAgent:
         )
 
         # TO DO: Call the database tool (e.g. the function above)
-        query_tool = self.create_tool(self)
+        query_tool = self.create_tool()
         
 
         agent = Agent(

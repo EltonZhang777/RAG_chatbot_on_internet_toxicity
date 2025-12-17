@@ -184,9 +184,9 @@ if prompt := st.chat_input("Ask a question about internet toxicity..."):
         with st.spinner("Searching database and generating answer..."):
             try:
                 # TO DO: Initialize Agent
-                agent = RAGAgent(database = st.session_state.database,
+                agent = RAGAgent(db = st.session_state.database,
                                  model_name = model_choice,
-                                 max_iterations = max_iter)
+                                 max_iter = max_iter)
                 
                 # Get answer
                 result = agent.ask(prompt)

@@ -54,6 +54,9 @@ if 'top_k' not in st.session_state:
 if 'database' not in st.session_state:
     st.session_state.database = None
 
+# Queue for example clicks so we can render their output outside the expander
+if 'queued_example' not in st.session_state:
+    st.session_state.queued_example = None
 
 # -----------------------------------------------------------------------------
 # Sidebar - User Configuration
@@ -241,5 +244,12 @@ with st.expander("💡 Example Questions"):
     
     for example in examples:
         if st.button(example, key=example):
-            # Simulate entering the question
-            AppUserInput(example)
+            # Queue the example so its input/output render outside the expander
+            st.session_state.queued_example = example
+
+# If an example was queued by a button click, send it as user input
+if st.session_state.queued_example:
+    queued = st.session_state.queued_example
+    # clear the queue before processing to avoid duplicate runs
+    st.session_state.queued_example = None
+    AppUserInput(queued)

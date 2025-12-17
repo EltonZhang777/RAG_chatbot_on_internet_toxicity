@@ -1,0 +1,21 @@
+"""
+Simple Streamlit app to test DuckDB connection.
+"""
+
+import streamlit as st
+from backend.database import RAGDatabase
+from config import DEFAULT_DB_PATH
+import config
+
+config.AddAllDirectories()
+
+st.title("Database Connection Test")
+
+db_path = DEFAULT_DB_PATH
+
+db = RAGDatabase(db_path)
+
+if db.test_connection():
+    st.success(f"✅ Connected to database: {db_path}")
+else:
+    st.error(f"❌ Failed to connect to database: {db_path}")
